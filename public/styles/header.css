@@ -1,0 +1,181 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 4vw;
+    background-color: var(--dark-blue);
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1300px;
+    justify-content: space-between;
+}
+
+.logo a{
+    text-decoration: none;
+    color: var(--light-cream); 
+    font-weight: 900;
+    transition: font-size 500ms;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab {
+    text-align: center;
+    padding: 0;
+}
+
+.tab-item {
+    color: var(--dark-blue);
+    transition: color 500ms;
+    text-decoration: none;
+    transition: font-size 500ms;
+}
+
+.customer-service-logo {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    transition: height 500ms, width 500ms, opacity 500ms;
+}
+
+@media only screen and (max-width: 599px){
+    .account-button-arrow-down {
+        height: 24px;
+        width: 24px;
+    }
+
+    .logo a {
+        font-size: 20px;
+    }
+
+    .tab {
+        opacity: 0;
+        height: 0;
+        width: 0;
+        font-size: 0;
+        border-top: 0px solid var(--light-cream);
+        position: fixed;
+        top: 70px;
+        right: 15px;
+        transition: height 0s, width 0s, font-size 0s, border-top 0s, opacity 150ms;
+        transition-delay: 150ms;
+    }
+
+    .browse-tab-menu {
+        color: var(--light-cream);
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border: 0px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .browse-tab-menu:hover + .tab {
+        opacity: 1;
+        height: auto;
+        width: 150px;
+        font-size: 13px;
+        border-top: 3px solid var(--dark-blue);
+        transition: height 0s, width 0s, font-size 0s, border-top 0s, opacity 150ms;
+        transition-delay: 150ms;
+    }
+
+    .tab-menu {
+        padding: 10px 0px;
+    }
+
+    .tab-menu:hover {
+        background-color: var(--light-cream);
+    }
+
+    .tab:hover {
+        opacity: 1;
+        height: auto;
+        width: 150px;
+        font-size: 13px;
+        border-top: 3px solid var(--dark-blue);
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .customer-service-logo {
+        height: 24px;
+        width: 24px;
+        opacity: 1;
+        margin-left: 10px;
+    }
+
+    .logo a {
+        font-size: 30px;
+    }
+    .browse-tab-menu {
+        display: none;
+    }
+
+    .tab {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .tab-menu {
+        display: flex;
+        align-items: center;
+        padding: 0px 10px;
+        transition: padding 500ms;
+    }
+
+    .tab-item {
+        display: flex;
+        align-items: center;
+        color: var(--light-cream);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .customer-service-logo {
+        height: 28px;
+        width: 28px;
+    }
+    .logo a {
+        font-size: 40px;
+    }
+
+    .tab-menu {
+        padding: 0px 15px;
+    }
+
+    .tab-item {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .tab-menu {
+        padding: 0px 20px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .customer-service-logo {
+        height: 30px;
+        width: 30px;
+    }
+
+    .tab-menu {
+        padding: 0px 25px;
+    }
+
+    .tab-item {
+        font-size: 20px;
+    }
+}

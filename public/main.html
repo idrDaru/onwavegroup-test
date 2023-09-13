@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <script src="js/main.js"></script>
+    <title>ClickFit</title>
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="api" id="api">
+            <div class="api2" id="api2"></div>
+        </div>
+        <div class="fitness-things" id="fitness-things">
+            <div id="image-container">
+                <div class="gallery-title">
+                    <h1 class="title">Drag the Picture</h1>
+                </div>
+            </div>
+        </div>
+        <div class="add-image-div" id="add-image-div">
+            <h1 class="title">Add Image</h1>
+            <form action="/api/add_image" method="POST" enctype="multipart/form-data" class="add-image-form">
+                <label for="image" class="file-input" id="image-input-label">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="image-input-logo-svg">
+                        <path d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm-.747 9.25h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fill-rule="nonzero" />
+                    </svg>
+                    <input type="file" accept="image/*" name="image" id="image" class="image-input" multiple>
+                    <p id="image-input-text">Choose a file or drag it here.</p>
+                </label>
+                
+                <button type="submit" class="submit-button" id="add-image-submit-button">Add</button>
+            </form>
+        </div>
+        <div class="form">
+            <h1 class="title">Submit Form</h1>
+            <form id="user-form" action="/api/add_user" method="POST" class="user-form" enctype="multipart/form-data">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="Email" required>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+
+                <label for="type">Type</label>
+                <select name="type" id="type" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <label for="active">Active</label>
+                <select name="active" id="active" required>
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <button type="submit" class="submit-button" id="user-form-submit-button">Submit</button>
+            </form>
+        </div>
+    </main> 
+    <div id="footer"></div> 
+</body>
+</html>
