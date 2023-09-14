@@ -1,0 +1,34 @@
+version: "1.0"
+services:
+  db:
+    image: mysql:8.0.34-debian
+    container_name: mysql
+    restart: always
+    environment:
+      - MYSQL_DATABASE=onwavegroup_test
+      - MYSQL_ROOT_PASSWORD=Testpass123
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - fullstack
+
+  app:
+    build: .
+    ports:
+      - 49160:8080
+    restart: on-failure
+    depends_on:
+      - db
+    networks:
+      - fullstack
+    env_file:
+      - .env
+
+volumes:
+  mysql:
+
+networks:
+  fullstack:
+    driver: bridge

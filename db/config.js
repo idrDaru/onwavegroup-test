@@ -1,5 +1,4 @@
-const mysql = require("mysql");
-require("dotenv").config();
+const mysql = require("mysql2");
 
 async function db() {
   const db = {
@@ -15,6 +14,14 @@ async function db() {
     try {
       await openConnection(conn)
         .then(async () => {
+          const queryCheckTable = `SELECT * FROM information_schema.tables WHERE table_schema='${process.env.DB_DATABASE}' AND table_name='users' LIMIT 1`;
+          const response = await dbRunQuery(queryCheckTable);
+          if (response.length == 0) {
+            const queryCreateUserTable =
+              "CREATE TABLE users (ID INT NOT NULL AUTO_INCREMENT, email VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL, password VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL, type VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL, active TINYINT DEFAULT 1, PRIMARY KEY (ID))";
+            console.log("Migrating Database...");
+            await dbRunQuery(queryCreateUserTable);
+          }
           await closeConnection(conn)
             .then(() => {
               resolve();
@@ -49,9 +56,13 @@ async function dbRunQuery(query) {
           .then(async () => {
             await executeQuery(conn, query)
               .then(async (value) => {
-                await closeConnection(conn).catch((err) => {
-                  reject(err);
-                });
+                await closeConnection(conn)
+                  .then((v) => {
+                    resolve(value);
+                  })
+                  .catch((err) => {
+                    reject(err);
+                  });
               })
               .catch((err) => {
                 reject(err);
@@ -61,7 +72,7 @@ async function dbRunQuery(query) {
             reject(err);
           });
 
-        resolve(true);
+        // resolve(true);
       } catch (err) {
         reject(err);
       }

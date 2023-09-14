@@ -1,8 +1,15 @@
 {
+  "name": "onwavegroup_test",
+  "version": "1.0.0",
+  "description": "On Wave Group technical test by Imam Daru Rismi",
+  "author": "Imam Daru Rismi <idrdaru@gmail.com>",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "axios": "^1.5.0",
     "dotenv": "^16.0.3",
     "formidable": "^3.5.1",
-    "mysql": "^2.18.1"
+    "mysql2": "^3.6.1"
   }
 }

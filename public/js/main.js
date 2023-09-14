@@ -74,7 +74,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     }
     draggableContainer(groupedElement);
   };
-  xhttp2.open("GET", "http://localhost:3000/api/source_images", true);
+  xhttp2.open("GET", "/api/source_images", true);
   xhttp2.send();
 
   function centerImage(container, img) {

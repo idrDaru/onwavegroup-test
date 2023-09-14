@@ -6,9 +6,10 @@ const AddUser = require("./api/add_user.js");
 const querystring = require("querystring");
 const formidable = require("formidable");
 const path = require("path");
+require("dotenv").config();
 
-const hostname = "localhost";
-const port = 3000;
+const hostname = process.env.APP_HOST;
+const port = process.env.APP_PORT;
 
 const server = http.createServer(async (req, res) => {
   await DB.db();
